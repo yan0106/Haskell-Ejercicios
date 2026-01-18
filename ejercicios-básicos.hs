@@ -6,6 +6,9 @@
 --e. Dada una tupla (Int, Int), devuelva la suma de sus componentes
 
 --a)
+{-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
+{-# HLINT ignore "Use guards" #-}
+{-# HLINT ignore "Use foldr" #-}
 primero :: [a] -> a -- lista con tipo genérico
 primero (x:xs) = x -- formato para listas
 
@@ -65,3 +68,17 @@ valor1ro :: a -> b -> a
 valor1ro x y = x
 
 --------------------------------------------------------------------------------------
+--Escribí una función que: reciba un número y devuelva "positivo" o "negativo"
+
+signoNum :: (Num a, Ord a) => a -> String -- necesito que el tipo 'a' sea de la clase Num y Ord (para ordenar/comparar)
+signoNum x = 
+    if x > 0 then "Positivo" -- '>' no viene de Num, viene de Ord
+    else if x == 0 then "Cero" 
+    else "Negativo" 
+
+------------------------------------------------------------------------------------
+--Definí una función que: devuelva True si un Bool es True, y False en el otro caso (usando pattern matching)
+
+esVerdadero :: Bool -> Bool
+esVerdadero True = True
+esVerdadero False = False
