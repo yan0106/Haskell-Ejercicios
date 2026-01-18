@@ -80,3 +80,26 @@ esVerdadero :: Bool -> Bool
 esVerdadero True = True
 esVerdadero False = False
 
+-----------------------------------------------------------------------------------
+--Reescribí con pattern matching: f x = if x == 0 then True else False
+
+f :: (Num a, Eq a) => a -> Bool -- con Eq alcanza el tipo, porque solo es =
+f 0 = True -- pattern matching no usa comparaciones (==). Cuando el argumento es 0 = True
+f _ = False -- cuando el argumento es cualquier otro valor = False
+
+-----------------------------------------------------------------------------------------
+--Definí una función que: reciba una tupla (x,y) y devuelva True si x > y
+
+xMayor :: Ord a => (a, a)-> Bool -- clase Ord para poder comparar con '>'
+xMayor (x, y) = if x > y then True else False -- Nota: las comparaciones '>' ya devuelven Bool solas
+
+-----------------------------------------------------------------------------------------
+--Definí una función que reciba una tupla (Int, Int, Int) y devuelva el mayor de los tres números
+
+intMayor :: (Int, Int, Int) -> Int -- Int ya pertenece a Ord! para usar '>'
+intMayor (x, y, z) -- cdo tengo condiciones múltiples se usan Guards
+    | x >= y && x >= z = x -- uso '>=' para cubrir casos de igualdades
+    | y >= x && y >= z = y
+    | otherwise = z      -- 'z > x && z > y = z' en el último caso se usa otherwise
+
+-----------------------------------------------------------------------------------------
