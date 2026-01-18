@@ -6,9 +6,6 @@
 --e. Dada una tupla (Int, Int), devuelva la suma de sus componentes
 
 --a)
-{-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
-{-# HLINT ignore "Use guards" #-}
-{-# HLINT ignore "Use foldr" #-}
 primero :: [a] -> a -- lista con tipo genérico
 primero (x:xs) = x -- formato para listas
 
@@ -82,3 +79,4 @@ signoNum x =
 esVerdadero :: Bool -> Bool
 esVerdadero True = True
 esVerdadero False = False
+
