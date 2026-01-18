@@ -103,3 +103,29 @@ intMayor (x, y, z) -- cdo tengo condiciones múltiples se usan Guards
     | otherwise = z      -- 'z > x && z > y = z' en el último caso se usa otherwise
 
 -----------------------------------------------------------------------------------------
+--Definí funciones usando pattern matching que:
+--a) Devuelvan el primer elemento de una lista
+--b) Devuelvan la lista sin su primer elemento
+--c) Devuelvan True si la lista tiene un solo elemento
+
+--a)
+primerElemento :: [a] -> a
+primerElemento (x:_) = x
+primerElemento [] = error "Lista vacía"
+
+--b)
+sinPrimero :: [a] -> [a]
+sinPrimero (_:xs) = xs
+sinPrimero [] = error "Lista vacía"
+
+--c)
+unElemento :: [a] -> Bool
+unElemento [_] = True -- lista con un solo elemento
+unElemento _ = False -- cualquier otra lista, vacía o con más de un elemento
+
+-----------------------------------------------------------------------
+--Definí una función que sume todos los elementos de una lista de enteros:
+
+sumaEnteros :: [Int] -> Int
+sumaEnteros [] = 0
+sumaEnteros (x:xs) = x + sumaEnteros xs
