@@ -58,5 +58,14 @@ xor x y
 xor2 :: Bool -> Bool -> Bool
 xor2 x y = if x /= y then True else False -- se puede simplificar como: x /= y , esto ya devuelve por si solo un Bool
 
+--j)
+max3 :: Int -> Int -> Int -> Int
+max3 x y z 
+    | x >= y && x >= z = x
+    | y >= x && y >= z = y
+    | otherwise = z
 
+--k)
+swap :: (a, b) -> (b, a)
+swap (x, y) = (y, x)
 
