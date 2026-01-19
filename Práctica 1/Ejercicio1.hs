@@ -42,4 +42,21 @@ valorAbs2 x   -- sin usar sign --
     | x < 0 = x * (-1)
     | otherwise = 0 
 
+--h) 'pot', toma un entero y un número, y devuelve el resultado de elevar el segundo a la potencia dada por el primero
+pot :: Int -> Int -> Int
+pot x n = n^x
+
+--i)
+--Rta1:
+xor :: Bool -> Bool -> Bool
+xor x y 
+    | x == True && y == False = True -- x == True, se puede simplificar como simplemente x
+    | x == False && y == True = True
+    | otherwise = False
+
+--Rta2:
+xor2 :: Bool -> Bool -> Bool
+xor2 x y = if x /= y then True else False -- se puede simplificar como: x /= y , esto ya devuelve por si solo un Bool
+
+
 
