@@ -65,8 +65,17 @@ duplicaTupla :: Int -> (Int, Int)
 duplicaTupla x = (x, x*2)
 
 --i)
-constante :: a -> Bool
-constante x = True
+constanteTrue :: a -> Bool
+constanteTrue x = True
 
+constanteFalse :: a -> Bool
+constanteFalse x = False
+
+--j)
+funcionIdentidad :: a -> a
+funcionIdentidad x = x
+
+miEspejo :: b -> b
+miEspejo n = n
 
 
