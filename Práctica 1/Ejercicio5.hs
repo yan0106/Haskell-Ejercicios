@@ -6,7 +6,7 @@ sea múltiplo de cuatro. (Diccionario de la Real Academia Española, 22° ed.) -
 
 anioBisiesto :: Int -> Bool
 anioBisiesto x
-    | x `mod` 400 == 0 = True -- para porner mod entre medio de dos operandos, usar `` (comillas invertidas)
+    | x `mod` 400 == 0 = True -- para poner mod entre medio de dos operandos, usar `` (comillas invertidas)
     | x `mod` 100 == 0 = False
     | x `mod` 4 == 0 = True -- condición más general
     | otherwise = False
