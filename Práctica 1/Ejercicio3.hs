@@ -9,4 +9,4 @@ funcionB (x, y) = x > y
 
 --c) f (x,y) = let z = x + y in g (z,y) where g (a,b) = a - b
 funcionC :: (a, b) -> a
-funcionC (x, _) = x
+funcionC (x, y) = x
