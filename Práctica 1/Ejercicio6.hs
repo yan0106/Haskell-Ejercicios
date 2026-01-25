@@ -50,3 +50,11 @@ longitudes (x:xs) = length x : longitudes xs
 -- por más que reciba lista de listas, se usa el patron (x:xs)
 -- x va a ser la primera sub-lista, xs las restantes sub-listas
 
+--h) orden, que dada una lista de pares de números, devuelve la lista de aquellos pares en los que la primera componente es menor que el triple de la segunda
+orden :: [(Int, Int)] -> [(Int, Int)]
+orden [] = []
+orden ((a, b):xs) = if a < (3*b) 
+                    then (a, b) : orden xs -- si el par cumple, lo agrego al resultado y sigo evaluando
+                    else orden xs -- si el par no cumple, no lo agrego y sigo evaluando el resto
+
+--i) pares, que dada una lista de enteros, devuelve la lista de los elementos pares
