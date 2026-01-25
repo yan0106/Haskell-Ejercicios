@@ -32,6 +32,21 @@ codes (x:xs) = fromEnum x : codes xs
 -- fromEnum es una función propia de Haskell que convierte cualquier cosa enumerable a un número entero
 -- en el caso de los char, ese número entero coincide con el código ASCII
 
+--e) restos, que calcula la lista de los restos de la división de los elementos de una lista de números dada por otro número dado
+restos :: [Int] -> Int -> [Int]
+restos [] n = []
+restos (x:xs) n = mod x n : restos xs n -- la f mod de Haskell calcula los restos de la división de enteros
+-- mod se puede usar: mod x n // x `mod` n
 
+--f) cuadrados, que dada una lista de números, devuelva la lista de sus cuadrados
+cuadrados :: [Int] -> [Int]
+cuadrados [] = []
+cuadrados (x:xs) = x * x : cuadrados xs
 
+--g) longitudes, que dada una lista de listas, devuelva la lista de sus longitudes
+longitudes :: [[a]] -> [Int] -- recibe lista de listas
+longitudes [] = []
+longitudes (x:xs) = length x : longitudes xs
+-- por más que reciba lista de listas, se usa el patron (x:xs)
+-- x va a ser la primera sub-lista, xs las restantes sub-listas
 
