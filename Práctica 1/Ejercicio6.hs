@@ -7,4 +7,10 @@ suma (x:xs) = x + suma xs -- 2. Caso recursivo: Sumo el primero (x) con el resul
 -- Nota: usamos los : para desarmar la lista. 
 -- No se usan guardas para la recursividad. Se usa pattern matching, escribimos 2 patrones
 
---b) 
+--b) alguno, que devuelve True si algún elemento de una lista de valores booleanos son True, y False en caso contrario
+alguno :: [Bool] -> Bool
+alguno [] = False -- caso base 
+alguno (x:xs)
+    | x  = True
+    | otherwise = alguno xs
+
