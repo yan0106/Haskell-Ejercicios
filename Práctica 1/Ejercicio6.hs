@@ -58,3 +58,21 @@ orden ((a, b):xs) = if a < (3*b)
                     else orden xs -- si el par no cumple, no lo agrego y sigo evaluando el resto
 
 --i) pares, que dada una lista de enteros, devuelve la lista de los elementos pares
+pares :: [Int] -> [Int]
+pares [] = []
+pares (x:xs) = if even x then x : pares xs -- even, es una f propia de Haskell para saber si un num es par
+                else pares xs
+
+--j) letras, que dada una lista de caracteres, devuelve la lista de aquellos que son letras (minúsculas o mayúsculas)
+letras :: [Char] -> [Char]
+letras [] = []
+letras (x:xs) = if (x >= 'a' && x <= 'z') || (x >= 'A' && x <= 'Z') then x : letras xs -- hay otros caracteres que no son letras, por ejemplo '@', '4'
+                else letras xs
+
+--k) masDe, que dada una lista de listas xxs y un número n, devuelve la lista de aquellas listas de xxs con longitud mayor que n
+masDe :: [[a]] -> Int -> [[a]] -- recibe una lista de listas y un núm y devuelve una lista de listas
+masDe [] n = []
+masDe (x:xs) n = if length x > n then x : masDe xs n
+                else masDe xs n
+
+
