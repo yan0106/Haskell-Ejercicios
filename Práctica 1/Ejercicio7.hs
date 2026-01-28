@@ -10,4 +10,4 @@ sum [1,2,3] = 6 -- va a junar todos los productos en un solo valor, resultado. -
 
 -- multiplica los elementos de la misma posición y después suma todos esos productos --
 scalarproduct :: [Int] -> [Int] -> Int
-scalarproduct lista1 lista2 = sum [x*y | (x,y) <- zip lista1 lista2] 
+scalarproduct lista1 lista2 = sum [x*y | (x,y) <- zip lista1 lista2]
