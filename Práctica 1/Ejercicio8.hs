@@ -11,3 +11,9 @@ divisors x
 matches :: Int -> [Int] -> [Int]
 matches n lista = [x | x <- lista, n == x]
 
+--c) unique, que dada una lista xs de enteros, devuelve la lista con los elementos no repetidos de xs
+
+unique :: [Int] -> [Int]
+unique [] = []
+unique (x:xs) = x : unique [ y | y <- xs, y /= x ] -- con ':' me guardo a x y sigo filtrando el resto con recursión
+
