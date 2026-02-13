@@ -6,10 +6,16 @@ module Dictionary (Dict, mkNewDict, insertDict, inDict, delDict) where --en modu
     --Este tipo Dict depende de un tipo cualquiera 'a'
     --Un Dict a, internamente es una lista [a], pero no quiero que desde afuera sepan que es una lista
 
-    mkNewDict :: Dict a
-    insertDict :: (Ord a) => a -> Dict a -> Dict a
-    inDict :: (Ord a) => a -> Dict a -> Bool
-    delDict :: (Ord a) => a -> Dict a -> Dict a 
+    mkNewDict :: Dict a -- crear una lista vacía
+    mkNewDict = D []
+
+    insertDict :: (Ord a) => a -> Dict a -> Dict a -- insertar un elemento en la lista
+    insertDict x (D xs) = D (x:xs)
+
+    inDict :: (Ord a) => a -> Dict a -> Bool -- buscar un elemento
+
+
+    delDict :: (Ord a) => a -> Dict a -> Dict a -- eliminar un elemento
 
 
 
