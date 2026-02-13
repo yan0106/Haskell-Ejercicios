@@ -2,24 +2,34 @@
 
 module Dictionary (Dict, mkNewDict, insertDict, inDict, delDict) where --en module no estoy definiendo el tipo. Estoy diciendo qué nombre se exporta.
     
+    -- representación interna
     newtype Dict a = D [a] -- constructor D del tipo Dict
     --Este tipo Dict depende de un tipo cualquiera 'a'
     --Un Dict a, internamente es una lista [a], pero no quiero que desde afuera sepan que es una lista
 
-    mkNewDict :: Dict a -- crear una lista vacía
+    -- crear un diccionario vacío
+    mkNewDict :: Dict a 
     mkNewDict = D []
 
-    insertDict :: (Ord a) => a -> Dict a -> Dict a -- insertar un elemento en la lista
-    --insertDict x (D xs) = D (x:xs)
+    -- insertar un elemento (sin repetir)
+    insertDict :: (Ord a) => a -> Dict a -> Dict a 
     insertDict x (D xs)
         | elem x xs = D xs -- la f 'elem' devuelve true si x pertenece a xs. Si es true, la f insertDict devuelve la lista sin incluir el elemento porque se repetiría
-        | otherwise = D (x:xs)
+        | otherwise = D (x:xs) -- en cualquier otro caso, agrega el elemento
 
-    inDict :: (Ord a) => a -> Dict a -> Bool -- buscar un elemento
+    -- verificar si pertenece un elemento
+    inDict :: (Ord a) => a -> Dict a -> Bool 
+    inDict x (D xs) = elem x xs -- elem, devuelve true o false
 
-
+    -- eliminar un elemento
     delDict :: (Ord a) => a -> Dict a -> Dict a -- eliminar un elemento
+    delDict x (D xs) = D (del x xs)
 
-
+    -- func. auxiliar
+    del :: (Eq a) => a -> [a] -> [a]
+    del _ [] = [] -- caso base
+    del x (y:ys)
+    | x == y    = del x ys
+    | otherwise = y : del x ys
 
     
