@@ -10,7 +10,10 @@ module Dictionary (Dict, mkNewDict, insertDict, inDict, delDict) where --en modu
     mkNewDict = D []
 
     insertDict :: (Ord a) => a -> Dict a -> Dict a -- insertar un elemento en la lista
-    insertDict x (D xs) = D (x:xs)
+    --insertDict x (D xs) = D (x:xs)
+    insertDict x (D xs)
+        | elem x xs = D xs -- la f 'elem' devuelve true si x pertenece a xs. Si es true, la f insertDict devuelve la lista sin incluir el elemento porque se repetiría
+        | otherwise = D (x:xs)
 
     inDict :: (Ord a) => a -> Dict a -> Bool -- buscar un elemento
 
