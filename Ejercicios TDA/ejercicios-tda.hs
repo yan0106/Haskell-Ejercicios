@@ -22,7 +22,7 @@ module Dictionary (Dict, mkNewDict, insertDict, inDict, delDict) where --en modu
     inDict x (D xs) = elem x xs -- elem, devuelve true o false
 
     -- eliminar un elemento
-    delDict :: (Ord a) => a -> Dict a -> Dict a -- eliminar un elemento
+    delDict :: (Ord a) => a -> Dict a -> Dict a
     delDict x (D xs) = D (del x xs)
 
     -- func. auxiliar
@@ -32,4 +32,6 @@ module Dictionary (Dict, mkNewDict, insertDict, inDict, delDict) where --en modu
     | x == y    = del x ys
     | otherwise = y : del x ys
 
-    
+    -- eliminar un elemento (usando filter)
+    {- delDict :: (Ord a) => a -> Dict a -> Dict a
+    delDict x (D xs) = D (filter (/= x) xs) -}
