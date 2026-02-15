@@ -40,6 +40,14 @@ inOrder :: (Ord a)=> Bintree a -> [a]
 inOrder EmptyBT = [] -- caso base
 inOrder (NodoBT y lf rt) = inOrder lf ++ [y] ++ inOrder rt
 {- Primero recorro todo lo que hay a la izquierda. Porque la izquierda no es un solo número, es todo un árbol!
-Después visito la raíz (el [y]).
+Después visito la raíz [y].
 Al final recorro todo lo que hay a la derecha, porque también es un árbol -}
+
+preOrder :: (Ord a)=> Bintree a -> [a]
+preOrder EmptyBT = []
+preOrder (NodoBT y lf rt) = [y] ++ preOrder lf ++ preOrder rt
+
+postOrder :: (Ord a)=> Bintree a -> [a]
+postOrder EmptyBT = []
+postOrder (NodoBT y lf rt) = postOrder lf ++ postOrder rt ++ [y]
 
