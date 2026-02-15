@@ -10,3 +10,25 @@ In-Order: La raíz va entre (In) los hijos. (Primero el izquierdo, después yo, 
 Post-Order: La raíz va después (Post) que los hijos. (Primero mis hijos, al final yo). 
 -}
 
+-- definición
+data Bintree a = EmptyBT | NodoBT a (Bintree a) (Bintree a) deriving Show -- árbol binario de tipo genérico 'a'
+
+-- funciones
+mkNewTree :: (Ord a)=> Bintree a
+mkNewTree = EmptyBT -- usa el constructor EmptyBT para crear un nuevo árbol vacío
+
+inTree :: (Ord a)=> a -> Bintree a -> Bool 
+inTree x EmptyBT = False
+inTree x (NodoBT y lf rt) -- nodo y, lf = sub-árbol izquierdo, rt = sub-árbol derecho
+    | x == y = True
+    | x < y = inTree x lf -- si x es menor que y entonces sigo buscando recursivamente en el sub-árbol izquierdo
+    | x > y = inTree x rt -- si x es mayor que y entonces sigo buscando recursivamente en el sub-árbol derecho
+
+addTree :: (Ord a)=> a -> Bintree a -> Bintree a
+addTree x EmptyBT = NodoBT x EmptyBT EmptyBT -- caso base: agrega x como nodo y dos sub-árboles vacíos
+addTree x (NodoBT y lf rt) 
+    | x == y  = NodoBT y lf rt -- si x == y, no lo puede agregar, devuelve el mismo árbol
+    | x < y   = NodoBT y (addTree x lf) rt -- si x < y, devuelve el nodo y, agrega recursivamente x en lf y rt queda igual
+    | x > y   = NodoBT y lf (addTree x rt) -- si x > y, devuelve el nodo y, el sub-árbol izquierdo igual y agrega recursivamente x a rt
+
+
