@@ -29,8 +29,8 @@ module Dictionary (Dict, mkNewDict, insertDict, inDict, delDict) where --en modu
     del :: (Eq a) => a -> [a] -> [a]
     del _ [] = [] -- caso base
     del x (y:ys)
-    | x == y    = del x ys
-    | otherwise = y : del x ys
+        | x == y    = del x ys
+        | otherwise = y : del x ys
 
     -- eliminar un elemento (usando filter)
     {- delDict :: (Ord a) => a -> Dict a -> Dict a
