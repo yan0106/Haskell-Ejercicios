@@ -51,3 +51,14 @@ postOrder :: (Ord a)=> Bintree a -> [a]
 postOrder EmptyBT = []
 postOrder (NodoBT y lf rt) = postOrder lf ++ postOrder rt ++ [y]
 
+-- eliminar
+-- func. auxiliar
+minTree :: (Ord a)=> Bintree a -> (a, Bintree a)
+minTree (NodoBT v EmptyBT rt) = (v,rt) -- Caso base: voy todo lo más a la izquierda que puedo, entonces lf queda vacío.
+-- si el sub-árbol izq es EmptyBT, significa que llegué al fondo y v es el mínimo.
+-- rt, es el árbol que queda dsps de arrancar ese valor
+minTree (NodoBT v lf rt) = let (x, new_lf) = minTree lf
+                           in (x, NodoBT v new_lf rt) -- devuelve el minimo x, y reconstruye el árbol nuevo. Ya no tiene
+-- más lf, ahora tiene new_lf
+
+
