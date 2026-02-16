@@ -11,6 +11,7 @@ Post-Order: La raíz va después (Post) que los hijos. (Primero mis hijos, al fi
 -}
 
 -- definición
+{- HLINT ignore "Redundant bracket" -}
 data Bintree a = EmptyBT | NodoBT a (Bintree a) (Bintree a) deriving Show -- árbol binario de tipo genérico 'a'
 
 -- funciones:
@@ -61,4 +62,14 @@ minTree (NodoBT v lf rt) = let (x, new_lf) = minTree lf
                            in (x, NodoBT v new_lf rt) -- devuelve el minimo x, y reconstruye el árbol nuevo. Ya no tiene
 -- más lf, ahora tiene new_lf
 
-
+delTree :: (Ord a)=> a -> Bintree a -> Bintree a
+delTree x EmptyBT = EmptyBT
+delTree x (NodoBT y lf EmptyBT)
+    | x == y  = lf
+delTree x (NodoBT y EmptyBT rt)
+    | x == y  = rt
+delTree x (NodoBT y lf rt)
+    | x < y   = NodoBT y (delTree x lf) rt
+    | x > y   = NodoBT y lf (delTree x rt)
+    | x == y  = let (k, wt) = minTree (rt)
+                in (NodoBT k lf wt)
