@@ -24,4 +24,17 @@ minTree (NodoBT v EmptyBT rt) = (v, rt) -- caso base. Si estoy en el nodo v y a 
 minTree (NodoBT v lf rt) = let (x, new_lf) = minTree lf
                            in (x, NodoBT v new_lf rt)
 
+-- definición TDA
+newtype ColaPrioridad a = CP (Bintree a) deriving Show
+
+-- funciones
+mkqpr :: (Ord a)=> ColaPrioridad a
+mkqpr = CP mkNewTree -- aplico el constructor de cola de prioridad a la función de creación de árboles
+
+addqpr :: (Ord a)=> a -> ColaPrioridad a -> ColaPrioridad a
+addqpr x (CP c) = CP (addTree x c) -- aplico el constructor CP para encapsular el resultado
+
+nextqpr :: 
+
+
 
