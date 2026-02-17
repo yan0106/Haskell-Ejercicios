@@ -45,3 +45,10 @@ popqpr (CP EmptyBT) = error "Cola Vacía"
 popqpr (CP c) = let (_, cola) = minTree c
                   in CP cola
 
+-- testeo
+{- en el GHCi:
+let c0 = mkqpr
+let c1 = addqpr 10 c0
+let c2 = addqpr 5 c1
+let c3 = addqpr 20 c2 -}
+-- muchas variables para poder testear diferetes partes es mejor que una variable que englobe todo
