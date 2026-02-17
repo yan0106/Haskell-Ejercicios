@@ -22,7 +22,11 @@ insert x [] = [x]
 insert x (y:ys) 
         | x < y   = x : y : ys -- si x < y, pego x adelante
         | otherwise = y : insert x ys -- si x no es < y, dejo y como estaba y sigo buscando en el resto (ys)
+-- inserta elementos de manera ordenada
 
+addqpr :: (Ord a)=> a -> ColaPrioridadL a -> ColaPrioridadL a
+addqpr x (CPL c) = let lista = insert x c
+                   in CPL lista
 
 
 
