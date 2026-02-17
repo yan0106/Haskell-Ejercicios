@@ -29,7 +29,11 @@ addqpr x (CPL c) = let lista = insert x c
                    in CPL lista
 
 nextqpr :: (Ord a)=> ColaPrioridadL a -> a
-nextqpr (CPL []) = error "La Cola está vacía"
+nextqpr (CPL []) = error "La cola está vacía"
 nextqpr (CPL c) = head c -- como recibe la cola (lista) ordenada, devuelve el primer elemento que siempre será el mínimo
 -- es lo mismo que hacer:  nextqpr (CPL (x:xs)) = x
 
+popqpr :: (Ord a)=> ColaPrioridadL a -> ColaPrioridadL a
+popqpr (CPL []) = error "La cola está vacía"
+popqpr (CPL c) = CPL (tail c)
+-- es lo mismo que hacer: popqpr (CPL (x:xs)) = CPL (xs)
