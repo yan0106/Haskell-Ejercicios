@@ -1,3 +1,5 @@
+-- Cola de Prioridad con Árboles Binarios de Búsqueda
+
 {- Las funciones que manipulan a la cola de prioridad, son:
 mkqpr: Instancia una nueva cola de prioridad vacía.
 addqpr: Agrega un nuevo elemento a la cola de prioridad
