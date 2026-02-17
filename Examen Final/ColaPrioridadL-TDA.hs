@@ -1,4 +1,4 @@
--- Cola de Prioridad, versión con Listas
+-- Cola de Prioridad con Listas
 
 {- Las funciones que manipulan a la cola de prioridad, son:
 mkqpr: Instancia una nueva cola de prioridad vacía.
@@ -28,5 +28,8 @@ addqpr :: (Ord a)=> a -> ColaPrioridadL a -> ColaPrioridadL a
 addqpr x (CPL c) = let lista = insert x c
                    in CPL lista
 
-
+nextqpr :: (Ord a)=> ColaPrioridadL a -> a
+nextqpr (CPL []) = error "La Cola está vacía"
+nextqpr (CPL c) = head c -- como recibe la cola (lista) ordenada, devuelve el primer elemento que siempre será el mínimo
+-- es lo mismo que hacer:  nextqpr (CPL (x:xs)) = x
 
