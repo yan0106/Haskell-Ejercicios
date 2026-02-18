@@ -57,3 +57,6 @@ msort lista = merge listaA listaB -- 4. Mezclo usando merge
         (izq, der) = mitades lista -- 1. Divido la lista original usando la f mitades
         listaA = msort izq -- 2. Ordeno la lista izq recursivamente con msort, continuando con subdivisiones de listas hasta llegar a [x]
         listaB = msort der -- 3. Ordeno la lista der recursivamente con msort, continuando con subdivisiones de listas hasta llegar a [x]
+
+-- la bajada (1, 2, 3)
+-- la subida (4)
