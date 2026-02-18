@@ -16,7 +16,7 @@ split [] = ([],[])
 split [a] = ([a], [])
 split (a:b:t) = let     -- a = primer elemento, b = segundo elemento, t = el resto 
                  (m,n) = split t
-               in
+                in
                  (a:m, b:n)
 {-En lugar de medir el largo de la lista y cortarla con una tijera al medio, propone algo más manual, 
 como cuando se reparten cartas:
@@ -36,7 +36,13 @@ split2 (a:b:t) = (a:m, b:n)
 que reciba dos listas ya ordenadas y las combine en una sola lista
 que también esté ordenada. -}
 
-
+merge :: (Ord a)=> [a] -> [a] -> [a]
+merge [] [] = []
+merge xs [] = xs
+merge [] ys = ys
+merge (x:xs) (y:ys)
+    | x <= y    = x : merge xs (y:ys) -- pongo x al frente. Para saber quién sigue, tenemos que comparar lo que quedó de mi mazo (xs) contra todo el otro mazo que sigue intacto (y:ys)
+    | otherwise = y : merge (x:xs) ys -- pongo y al frente y sigo comparando todo mi mazo (x:xs) con el resto del otro (ys)
 
 {- c) Escriba la función "msort :: (Ord a) => [a] -> [a]".
 Observación: El algoritmo debe dividir la lista en dos mitades,
