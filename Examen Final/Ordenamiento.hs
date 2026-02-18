@@ -10,6 +10,8 @@ insertar x (y:ys)
     | x < y = x : y : ys
     | otherwise = y : insertar x ys
 
+-- Quick Sort
+
 {-b) Escriba una función Qsort::(Ord a)=>[a]→[a]. Sin utilizar listas por comprensión.
 Observación: Escriba una función particion que reciba como argumento, un valor de referencia o
 pivot y a una lista de valores del mismo tipo que el pivot. Esta función da como resultado una

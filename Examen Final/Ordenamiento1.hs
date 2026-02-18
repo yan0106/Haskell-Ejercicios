@@ -1,3 +1,5 @@
+-- Selection Sort
+
 {- a) Escriba una función "minimo :: (Ord a) => [a] -> a"
 que devuelva el elemento más pequeño de una lista no vacía. -}
 
@@ -18,8 +20,6 @@ quitar x (y:ys)
     | x == y = ys
     | otherwise = resultado
     where resultado = y : quitar x ys
-
--- Selection Sort
 
 {- c) Escriba la función "ssort :: (Ord a) => [a] -> [a]".
 Observación: Para ordenar la lista, ssort debe encontrar el
