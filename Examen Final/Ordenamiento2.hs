@@ -4,7 +4,7 @@
 que dada una lista, la divida en dos partes de tamaño similar
 (pueden usar la función "splitAt" o calcular la longitud). -}
 
-mitades :: [a] -> ([a], [a])
+mitades :: [a] -> ([a], [a]) -- corta el mazo a la mitad
 mitades [] = ([],[])
 mitades [a] = ([a],[])
 mitades lista = splitAt mitad lista  -- la f splitAt recibe un un número y una lista, y devuelve un par de listas (una tupla)
@@ -36,7 +36,7 @@ split2 (a:b:t) = (a:m, b:n)
 que reciba dos listas ya ordenadas y las combine en una sola lista
 que también esté ordenada. -}
 
-merge :: (Ord a)=> [a] -> [a] -> [a]
+merge :: (Ord a)=> [a] -> [a] -> [a] -- une los dos mazos ordenados
 merge [] [] = []
 merge xs [] = xs
 merge [] ys = ys
@@ -48,3 +48,12 @@ merge (x:xs) (y:ys)
 Observación: El algoritmo debe dividir la lista en dos mitades,
 ordenar cada mitad recursivamente con msort y luego combinarlas
 usando la función merge. -}
+
+msort :: (Ord a)=> [a] -> [a]
+msort [] = [] -- caso base por seguridad
+msort [x] = [x] -- caso base por lógica. Listas de un elemento, ya están ordenadas.
+msort lista = merge listaA listaB -- 4. Mezclo usando merge
+    where 
+        (izq, der) = mitades lista -- 1. Divido la lista original usando la f mitades
+        listaA = msort izq -- 2. Ordeno la lista izq recursivamente con msort, continuando con subdivisiones de listas hasta llegar a [x]
+        listaB = msort der -- 3. Ordeno la lista der recursivamente con msort, continuando con subdivisiones de listas hasta llegar a [x]
