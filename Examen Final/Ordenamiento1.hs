@@ -12,8 +12,12 @@ minimo (x:xs)
 que reciba un elemento y una lista, y devuelva la lista sin la
 primera aparición de dicho elemento. -}
 
-
-
+quitar :: (Ord a)=> a -> [a] -> [a]
+quitar x [] = []
+quitar x (y:ys) 
+    | x == y = ys
+    | otherwise = resultado
+    where resultado = y : quitar x ys
 
 -- Selection Sort
 
