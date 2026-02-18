@@ -25,3 +25,11 @@ quitar x (y:ys)
 Observación: Para ordenar la lista, ssort debe encontrar el
 mínimo, ponerlo al inicio y llamar recursivamente a ssort con el
 resto de la lista (la lista original sin el mínimo). -}
+
+ssort :: (Ord a)=> [a] -> [a]
+ssort [] = []
+ssort lista = valorMinimo : ssort resto
+    where 
+        valorMinimo = minimo lista
+        resto = quitar valorMinimo lista
+    
