@@ -27,13 +27,14 @@ ssort lista = m : ssort resto
 --------------------------------------------------------
 
 -- Insertion Sort
--- (insertar, isort )
+-- (insertar, isort)
 
 insertar :: (Ord a)=> a -> [a] -> [a]
 insertar x [] = [x]
 insertar x (y:ys) 
     | x < y = x : y : ys -- duda
     | otherwise = y : insertar x ys
+-- test: probar con una lista que ya esté ordenada (condición)
 
 isort :: (Ord a)=> [a] -> [a]
 isort [] = []
@@ -51,7 +52,7 @@ particion pivote [] = ([],[])
 particion pivote (x:xs) 
     | x <= pivote = (x:menores, mayores)
     | otherwise   = (menores, x:mayores)
-    where (mayores, menores) = particion pivote xs
+    where (menores, mayores) = particion pivote xs
 
 qsort :: (Ord a)=> [a] -> [a]
 qsort [] = []
@@ -60,4 +61,27 @@ qsort (x:xs) = let (menores, mayores) = particion x xs
 
 ------------------------------------------------------------
 -- Merge Sort
--- ()
+-- (mitades, merge, msort)
+
+mitades :: [a] -> ([a],[a])
+mitades [] = ([],[])
+mitades [a] = ([a],[])
+mitades lista = splitAt mitad lista
+           where mitad = div (length lista) 2
+
+merge :: (Ord a)=> [a] -> [a] -> [a]
+merge [] []  = []
+merge [] ys = ys   -- ys = 'lo que sea'
+merge xs [] = xs   -- xs = 'lo que sea' 
+merge (x:xs) (y:ys)
+    | x <= y    = x : merge xs (y:ys)
+    | otherwise = y : merge (x:xs) ys
+
+msort :: (Ord a)=> [a] -> [a]
+msort [] = []
+msort [x] = [x]
+msort lista = resultado
+            where (izq, der) = mitades lista 
+                  izqOrd = msort izq
+                  derOrd = msort der
+                  resultado = merge izqOrd derOrd
