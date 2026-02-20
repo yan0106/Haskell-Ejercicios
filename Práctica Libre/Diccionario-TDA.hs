@@ -1,5 +1,8 @@
 -- Diccionario TDA (con Listas)
 
+-- Para exportar:
+module Diccionario (Diccionario, nuevoDicc, insertarDicc, buscarDicc, eliminarDicc, esVacio) where
+
 -- Definición interna
 newtype Diccionario a = Dicc [a] deriving Show
 
@@ -42,3 +45,7 @@ elimAux x (y:ys)
     | x < y  = y:ys
     | otherwise = y: elimAux x ys
 
+-- Consultar si está vacío
+esVacio :: Diccionario a -> Bool
+esVacio (Dicc []) = True
+esVacio (Dicc _)  = False
