@@ -31,11 +31,29 @@ delTree x (NodoBT y EmptyBT rt)
 delTree x (NodoBT y lf rt)
     | x < y  = delTree x lf
     | x > y  = delTree x rt
-    | x == y = let (v, new_rt) = minTree rt -- le paso la derecha a minTree porque tenemos que encontrar el más chico de la derrecha para mantener la propiedad de ABB
-               in  (NodoBT v lf new_rt)
+    | x == y = let (v, new_rt) = minTree rt -- le paso la derecha a minTree porque tenemos que encontrar el más chico de la derecha para mantener la propiedad del ABB
+               in  NodoBT v lf new_rt
 
 minTree :: (Ord a)=> BinTree a -> (a, BinTree a) -- devuelve el valor más chico y el árbol sin ese valor. Siempre se llama cdo sabemos que el árbol tiene algo
 minTree (NodoBT n EmptyBT rt) = (n, rt)
 minTree (NodoBT n lf rt) = let (x, new_lf) = minTree lf -- armo una variable para guardar el resultado de la recursión sobre el hijo izquierdo
                            in (x, NodoBT n new_lf rt) -- reconstruyo el árbol con los nuevos valores del hijo izquierdo sin el mínimo
+
+-- encapsulamiento 
+newtype Dict a = Dicc (BinTree a) deriving Show
+
+-- funciones (mkDict, insertDict, inDict, delDict)
+
+mkDict :: (Ord a)=> Dict a
+mkDict = Dicc setEmptyTree
+
+insertDict :: (Ord a)=> a -> Dict a -> Dict a
+insertDict x (Dicc t) = Dicc (addTree x t)
+
+inDict :: (Ord a)=> a -> Dict a -> Bool
+inDict x (Dicc t) = inTree x t
+
+delDict :: (Ord a)=> a -> Dict a -> Dict a
+delDict x (Dicc t) = Dicc (delTree x t)
+
 
