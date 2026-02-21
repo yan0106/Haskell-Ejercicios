@@ -1,4 +1,4 @@
--- Diccionario TDA (con Listas)
+-- Diccionario Simple TDA (con Listas)
 
 -- Para exportar:
 module Diccionario (Diccionario, nuevoDicc, insertarDicc, buscarDicc, eliminarDicc, esVacio) where
