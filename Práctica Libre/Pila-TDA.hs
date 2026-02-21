@@ -25,5 +25,15 @@ stackIsEmpty (S []) = True
 stackIsEmpty (S (y:ys)) = False
 
 -------------------------------------------------------------
+-- otra definición interna posible
+data Pila a  = Empty | Nodo a (Pila a) -- Nodo espera dos cosas
+-- Un Nodo es una caja que guarda un valor (el a) y que además tiene un brazo que sostiene a otra Pila completa (como una mamushka)
+-- o sos el vacío (Empty) o sos un Nodo enganchado a algo que también sea una Pila
 
+-- funciones (emptyPila, pushPila, popPila, topPila, pilaIsEmpty)
 
+emptyPila :: Pila a
+emptyPila = Empty
+
+pushPila :: a -> Pila a -> Pila a
+pushPila x pila = Nodo x pila -- la f necesita el elem y la lista, devuelve un nuevo Nodo que necesita el elemento y la lista vieja
