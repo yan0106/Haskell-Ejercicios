@@ -17,3 +17,10 @@ ssort l = m : ssort l' -- pego el mínimo adelante de la lista y vuelvo a llamar
     where m = minimo l -- busco el mínimo de la lista
           l' = delete m l -- elimino el mínimo y devuelvo una lista nueva
 
+{- 
+ssort [4,2,5,1]
+= 1 : ssort [4,2,5]
+= 1 : (2 : ssort [4,5])
+= 1 : (2 : (4 : ssort [5]))
+= 1 : (2 : (4 : [5])) 
+-}
