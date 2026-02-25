@@ -1,6 +1,7 @@
 -- función miZip
 
 miZip :: [a]->[b]->[(a,b)]
+miZip [] [] = []
 miZip [] _ = [] 
 miZip _ [] = []
 miZip (x:xs) (y:ys) = (x,y) : miZip xs ys
