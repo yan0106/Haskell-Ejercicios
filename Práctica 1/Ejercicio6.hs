@@ -1,4 +1,4 @@
---6) Sin usar funciones predefinidas, defina recursivamente las siguientes funciones y determine su tipo más general:
+{- 6) Sin usar funciones predefinidas, defina recursivamente las siguientes funciones y determine su tipo más general: -}
 
 --a) suma, que suma todos los elementos de una lista de números:
 suma :: Num a => [a] -> a
@@ -94,7 +94,11 @@ letras (x:xs) = if (x >= 'a' && x <= 'z') || (x >= 'A' && x <= 'Z') then x : let
 --k) masDe, que dada una lista de listas xxs y un número n, devuelve la lista de aquellas listas de xxs con longitud mayor que n
 masDe :: [[a]] -> Int -> [[a]] -- recibe una lista de listas y un núm y devuelve una lista de listas
 masDe [] n = []
-masDe (x:xs) n = if length x > n then x : masDe xs n
-                else masDe xs n
+masDe (x:xs) n
+    | longitud x > n = x : masDe xs n
+    | otherwise      = masDe xs n
 
-
+longitud :: [a] -> Int
+longitud [] = 0
+longitud [x] = 1
+longitud (x:xs) = 1 + longitud xs
