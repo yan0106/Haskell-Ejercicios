@@ -55,9 +55,14 @@ cuadrados (x:xs) = x * x : cuadrados xs
 --g) longitudes, que dada una lista de listas, devuelva la lista de sus longitudes
 longitudes :: [[a]] -> [Int] -- recibe lista de listas
 longitudes [] = []
-longitudes (x:xs) = length x : longitudes xs
+longitudes (x:xs) = calculaLong x : longitudes xs
 -- por más que reciba lista de listas, se usa el patron (x:xs)
 -- x va a ser la primera sub-lista, xs las restantes sub-listas
+
+calculaLong :: [a] -> Int
+calculaLong [] = 0
+calculaLong [x] = 1
+calculaLong (x:xs) = 1 + calculaLong xs
 
 --h) orden, que dada una lista de pares de números, devuelve la lista de aquellos pares en los que la primera componente es menor que el triple de la segunda
 orden :: [(Int, Int)] -> [(Int, Int)]
