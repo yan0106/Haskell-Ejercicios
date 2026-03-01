@@ -10,8 +10,9 @@ suma (x:xs) = x + suma xs -- 2. Caso recursivo: Sumo el primero (x) con el resul
 --b) alguno, que devuelve True si algún elemento de una lista de valores booleanos son True, y False en caso contrario
 alguno :: [Bool] -> Bool
 alguno [] = False -- caso base
-alguno (x:xs) = x || alguno xs
--- si x es True, el resultado es True; si no, delega la evaluación al resto de la lista xs
+alguno (x:xs)
+    | x == True = True
+    | otherwise = alguno xs
 
 --c) todos, que devuelve True si todos los elementos de una lista de valores booleanos son True, y False en caso contrario
 todos :: [Bool] -> Bool
