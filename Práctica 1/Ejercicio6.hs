@@ -16,15 +16,10 @@ alguno (x:xs)
 
 --c) todos, que devuelve True si todos los elementos de una lista de valores booleanos son True, y False en caso contrario
 todos :: [Bool] -> Bool
-todos [] = True
-todos (x:xs) = x && todos xs
-{- Ejemplo: todos [True] -- lista con 1 elemento
-1. Separa x = True, xs = [].
-Calcula: True && todos []
-2. Llama al base: todos []
-El código devuelve: True.
-3. Vuelve arriba:
-True && True ... Resultado Final: True -}
+todos [] = True -- si no hay nada que sea False, entonces podemos decir que "todos" (el conjunto vacío) cumplen la condición
+todos (x:xs)
+    | x == True = todos xs
+    | otherwise = False
 
 --d) codes, que dada una lista de caracteres, devuelve la lista de sus ordinales
 codes :: [Char] -> [Int]
