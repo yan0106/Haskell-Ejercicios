@@ -60,8 +60,16 @@ orden ((a, b):xs) = if a < (3*b)
 --i) pares, que dada una lista de enteros, devuelve la lista de los elementos pares
 pares :: [Int] -> [Int]
 pares [] = []
-pares (x:xs) = if even x then x : pares xs -- even, es una f propia de Haskell para saber si un num es par
-                else pares xs
+pares (x:xs) 
+    | esPar x = x : pares xs
+    | otherwise = pares xs
+
+esPar :: Int -> Bool
+esPar 0 = True
+esPar 1 = False
+esPar x 
+    | x > 0 = esPar (x - 2)
+    | otherwise = esPar (x + 2)
 
 --j) letras, que dada una lista de caracteres, devuelve la lista de aquellos que son letras (minúsculas o mayúsculas)
 letras :: [Char] -> [Char]
