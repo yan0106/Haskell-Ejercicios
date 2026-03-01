@@ -24,9 +24,14 @@ todos (x:xs)
 --d) codes, que dada una lista de caracteres, devuelve la lista de sus ordinales
 codes :: [Char] -> [Int]
 codes [] = []
-codes (x:xs) = fromEnum x : codes xs
--- fromEnum es una función propia de Haskell que convierte cualquier cosa enumerable a un número entero
--- en el caso de los char, ese número entero coincide con el código ASCII
+codes (x:xs) = (ascii x) : codes xs
+
+ascii :: Char -> Int
+ascii 'a' = 97
+ascii 'b' = 98
+ascii 'c' = 99
+ascii 'd' = 100 
+-- ...
 
 --e) restos, que calcula la lista de los restos de la división de los elementos de una lista de números dada por otro número dado
 restos :: [Int] -> Int -> [Int]
