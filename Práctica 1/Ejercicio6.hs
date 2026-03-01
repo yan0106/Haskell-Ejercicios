@@ -1,4 +1,4 @@
-{- 6) Sin usar funciones predefinidas, defina recursivamente las siguientes funciones y determine su tipo más general: -}
+--6) Sin usar funciones predefinidas, defina recursivamente las siguientes funciones y determine su tipo más general:
 
 --a) suma, que suma todos los elementos de una lista de números:
 suma :: Num a => [a] -> a
@@ -102,3 +102,11 @@ longitud :: [a] -> Int
 longitud [] = 0
 longitud [x] = 1
 longitud (x:xs) = 1 + longitud xs
+
+--l) Saber si un elemento está adentro de una lista.
+
+pertenece :: (Eq a) => a -> [a] -> Bool
+pertenece x [] = False
+pertenece x (y:ys)
+    | x == y = True
+    | otherwise = pertenece x ys
