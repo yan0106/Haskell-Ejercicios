@@ -123,9 +123,4 @@ noPertenece x (y:ys)
 
 
 
-n) El "Duplicador" (Mapeo)
-Este es primo hermano de codes o restos.
-
-Consigna: duplicar :: [Int] -> [Int]
-
-Ejemplo: duplicar [1, 2, 3] da [2, 4, 6].
+-- n) El "Duplicador" (Mapeo). Consigna: duplicar :: [Int] -> [Int]. Ejemplo: duplicar [1, 2, 3] da [2, 4, 6].
