@@ -36,8 +36,16 @@ ascii 'd' = 100
 --e) restos, que calcula la lista de los restos de la división de los elementos de una lista de números dada por otro número dado
 restos :: [Int] -> Int -> [Int]
 restos [] n = []
-restos (x:xs) n = mod x n : restos xs n -- la f mod de Haskell calcula los restos de la división de enteros
--- mod se puede usar: mod x n // x `mod` n
+restos (x:xs) n = (resto x n) : restos xs n
+
+resto :: Int -> Int -> Int
+resto x 0 = error "No se puede dividir por 0"
+resto x 1 = 0  -- resto 0
+resto x n
+    | x >= n    = resto (x - n) n  -- mientras sea grande, le sigo quitando "paquetes"
+    | otherwise = x                -- cuando ya es chico, econtré el resto
+-- el resto es, por definición, lo que sobra de una división entera. Y lo que sobra siempre tiene que ser menor 
+-- al divisor.
 
 --f) cuadrados, que dada una lista de números, devuelva la lista de sus cuadrados
 cuadrados :: [Int] -> [Int]
