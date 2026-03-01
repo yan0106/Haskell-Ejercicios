@@ -110,3 +110,22 @@ pertenece x [] = False
 pertenece x (y:ys)
     | x == y = True
     | otherwise = pertenece x ys
+
+-- la función opuesta:
+noPertenece :: (Eq a) => a -> [a] -> Bool
+noPertenece x [] = True
+noPertenece x (y:ys)
+    | x == y = False
+    | otherwise = noPertenece x ys
+
+-- m) Consigna: mayores Que :: Int -> [Int] -> [Int]. Ejemplo: mayoresQue 5 [2, 8, 4, 10] da [8, 10]
+
+
+
+
+n) El "Duplicador" (Mapeo)
+Este es primo hermano de codes o restos.
+
+Consigna: duplicar :: [Int] -> [Int]
+
+Ejemplo: duplicar [1, 2, 3] da [2, 4, 6].
