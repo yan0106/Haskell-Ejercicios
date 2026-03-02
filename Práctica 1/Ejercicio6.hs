@@ -125,6 +125,9 @@ mayoresQue n (x:xs)
     | x >= n = x: mayoresQue n xs
     | otherwise = mayoresQue n xs
 
-
-
 -- n) El "Duplicador" (Mapeo). Consigna: duplicar :: [Int] -> [Int]. Ejemplo: duplicar [1, 2, 3] da [2, 4, 6]
+duplicador :: [Int] -> [Int]
+duplicador [] = []
+duplicador (x:xs) = (x * 2) : duplicador xs
+
+-- l) Consigna: cuantos :: (Eq a) => a -> [a] -> Intcuantos 5 [5, 2, 5, 8] -> 2
