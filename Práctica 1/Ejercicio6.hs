@@ -130,4 +130,9 @@ duplicador :: [Int] -> [Int]
 duplicador [] = []
 duplicador (x:xs) = (x * 2) : duplicador xs
 
--- l) Consigna: cuantos :: (Eq a) => a -> [a] -> Intcuantos 5 [5, 2, 5, 8] -> 2
+-- ñ) Consigna: cuantos :: (Eq a) => a -> [a] -> Int . Ejemplo: cuantos 5 [5, 2, 5, 8] -> 2
+cuantos :: (Eq a)=> a -> [a] -> Int
+cuantos n [] = 0
+cuantos n (x:xs)
+    | x == n = 1 + cuantos n xs
+    | x /= n = 0 + cuantos n xs
