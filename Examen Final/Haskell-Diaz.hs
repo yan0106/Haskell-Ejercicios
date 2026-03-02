@@ -134,10 +134,12 @@ addqpr x (CP arbol) = CP (addBinTree x arbol)
 
 nextqpr :: (Ord a)=> ColaPrioridad a -> a
 nextqpr (CP EmptyBT) = error "Cola vacía"
-nextqpr (CP tree) = minBinTree tree
+nextqpr (CP arbol) = minBinTree arbol
 
 popqpr :: (Ord a)=> ColaPrioridad a -> ColaPrioridad a
-popqpr (CP a) = CP (popBinTree a)
+popqpr (CP arbol) = CP (popBinTree arbol)
+
+
 
 
 
