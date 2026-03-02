@@ -136,3 +136,11 @@ cuantos n [] = 0
 cuantos n (x:xs)
     | x == n = 1 + cuantos n xs
     | x /= n = 0 + cuantos n xs
+
+-- o) Consigna: pegar :: [a] -> [a] -> [a]Ejemplo: pegar [1,2] [3,4] -> [1,2,3,4]
+pegar :: [a] -> [a] -> [a]
+pegar [] [] = []
+pegar a [] = a
+pegar [] b = b
+pegar (x:xs) (y:ys) = x : pegar xs (y:ys)
+
