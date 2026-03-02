@@ -119,8 +119,12 @@ noPertenece x (y:ys)
     | otherwise = noPertenece x ys
 
 -- m) Consigna: mayores Que :: Int -> [Int] -> [Int]. Ejemplo: mayoresQue 5 [2, 8, 4, 10] da [8, 10]
+mayoresQue :: Int -> [Int]-> [Int]
+mayoresQue n [] = []
+mayoresQue n (x:xs) 
+    | x >= n = x: mayoresQue n xs
+    | otherwise = mayoresQue n xs
 
 
 
-
--- n) El "Duplicador" (Mapeo). Consigna: duplicar :: [Int] -> [Int]. Ejemplo: duplicar [1, 2, 3] da [2, 4, 6].
+-- n) El "Duplicador" (Mapeo). Consigna: duplicar :: [Int] -> [Int]. Ejemplo: duplicar [1, 2, 3] da [2, 4, 6]
