@@ -99,6 +99,7 @@ Sugerencia: Recordar como extraer el elemento con clave más pequeña de un árb
 -- definición interna --
 data BinTree a = EmptyBT | NodoBT a (BinTree a) (BinTree a) deriving Show
 
+-- funciones -- 
 newBinTree :: (Ord a)=> BinTree a
 newBinTree = EmptyBT -- la función es igual al constructor vacío
 
@@ -119,7 +120,24 @@ popBinTree EmptyBT = EmptyBT  -- árbol vacío
 popBinTree (NodoBT y EmptyBT rt) = rt  -- o no tiene nada a la izquierda
 popBinTree (NodoBT y lf rt) = NodoBT y (popBinTree lf) rt -- o tiene algo a la izquierda
 
+-- probar funciones --
+-- ghci> let arbol = NodoBT 5 (NodoBT 3 EmptyBT EmptyBT) (NodoBT 10 EmptyBT EmptyBT)
+
+-- encapsulamiento --
+newtype ColaPrioridad a = CP (BinTree a) deriving Show
+
+mkqpr :: (Ord a)=> ColaPrioridad a
+mkqpr = CP EmptyBT
+
+addqpr :: (Ord a)=> a -> ColaPrioridad a -> ColaPrioridad a
+addqpr x (CP arbol) = CP (addBinTree x arbol)
+
+nextqpr :: (Ord a)=> ColaPrioridad a -> a
+nextqpr (CP EmptyBT) = error "Cola vacía"
+nextqpr (CP tree) = minBinTree tree
+
+popqpr :: (Ord a)=> ColaPrioridad a -> ColaPrioridad a
+popqpr (CP a) = CP (popBinTree a)
 
 
 
-        
