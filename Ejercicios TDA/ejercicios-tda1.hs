@@ -1,6 +1,6 @@
 -- Ejercicio para el lector: Escriba el modulo diccionario con una implementación de los mismos utilizando List.
 
-module Dictionary (Dict, mkNewDict, insertDict, inDict, delDict) where --en module no estoy definiendo el tipo. Estoy diciendo qué nombre se exporta.
+--en module no estoy definiendo el tipo. Estoy diciendo qué nombre se exporta.
     
     -- representación interna
     newtype Dict a = D [a] -- constructor D del tipo Dict
@@ -32,6 +32,3 @@ module Dictionary (Dict, mkNewDict, insertDict, inDict, delDict) where --en modu
         | x == y    = del x ys
         | otherwise = y : del x ys
 
-    -- eliminar un elemento (usando filter)
-    {- delDict :: (Ord a) => a -> Dict a -> Dict a
-    delDict x (D xs) = D (filter (/= x) xs) -}
