@@ -46,3 +46,18 @@ add x (y:ys)
     | x == y = y:ys
     | x /= y = y: add x ys
 
+delSet :: (Eq a) => a -> Set a -> Set a
+delSet x (S lista) = S (borrar x lista)
+
+--función aux--
+borrar :: (Eq a)=> a -> [a] -> [a]
+borrar x [] = []
+borrar x (y:ys)
+    | x == y = ys
+    | x /= y = y: borrar x ys
+
+unionSet :: (Eq a) => Set a -> Set a -> Set a
+unionSet set1 set2
+    | setEmpty set1 = set2
+    | setEmpty set2 = set1
+    | otherwise = 
