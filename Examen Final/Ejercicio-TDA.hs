@@ -1,0 +1,21 @@
+{- 
+Un CONJUNTO o SET, es una colección de ítems del mismo tipo distinguibles entre sí por su clave o valor, 
+en la cual un ítem puede ser testeado si es miembro, insertado o borrado de la colección. 
+La cantidad de elementos distintos es lo que se denomina el tamaño del conjunto.
+
+module Set (Set, emptySet, setEmpty, inSet, addSet, delSet, unionSet) where
+
+Firmas de las funciones solicitadas:
+
+emptySet :: Set a
+setEmpty :: Set a -> Bool
+inSet    :: (Eq a) => a -> Set a -> Bool
+addSet   :: (Eq a) => a -> Set a -> Set a
+delSet   :: (Eq a) => a -> Set a -> Set a
+unionSet :: (Eq a) => Set a -> Set a -> Set a
+
+Defina el tipo de dato e implemente los métodos del nuevo tipo de dato, 
+utilizando listas no ordenadas y sin duplicados. 
+El método unionSet (Unión de dos conjuntos) se escribirá haciendo uso de los 
+métodos ya definidos, es decir no se operará directamente la lista sino que se operará al SET.
+-}
