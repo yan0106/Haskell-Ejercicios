@@ -116,7 +116,7 @@ minBinTree (NodoBT y EmptyBT rt) = (y, rt) -- si a la izquierda está vacío, es
 minBinTree (NodoBT y lf rt) = let (x, new_left) = minBinTree lf -- si a la izq. tengo algo, tengo que ir lo más a la izquierda posible
                               in (x, NodoBT y new_left rt)
 
--- recorre el árbol 2 veces:
+-- recorre el árbol 2 veces
 {- 
 minBinTree :: (Ord a)=> BinTree a -> a
 minBinTree EmptyBT = error "Está vacío"
@@ -128,8 +128,6 @@ popBinTree EmptyBT = EmptyBT  -- árbol vacío
 popBinTree (NodoBT y EmptyBT rt) = rt  -- o no tiene nada a la izquierda
 popBinTree (NodoBT y lf rt) = NodoBT y (popBinTree lf) rt -- o tiene algo a la izquierda 
 -}
-
-minBinTree :: (Ord a)=> 
 
 -- probar funciones --
 -- ghci> let arbol = NodoBT 5 (NodoBT 3 EmptyBT EmptyBT) (NodoBT 10 EmptyBT EmptyBT)
@@ -145,10 +143,15 @@ addqpr x (CP arbol) = CP (addBinTree x arbol)
 
 nextqpr :: (Ord a)=> ColaPrioridad a -> a
 nextqpr (CP EmptyBT) = error "Cola vacía"
-nextqpr (CP arbol) = minBinTree arbol
+nextqpr (CP arbol) = let (x, new_arbol) = minBinTree arbol
+                     in x
+
 
 popqpr :: (Ord a)=> ColaPrioridad a -> ColaPrioridad a
-popqpr (CP arbol) = CP (popBinTree arbol)
+popqpr (CP EmptyBT) = error "Cola Vacía"
+popqpr (CP arbol) = let (x, new_arbol) = minBinTree arbol
+                    in CP new_arbol
+
 
 
 
