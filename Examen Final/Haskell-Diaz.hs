@@ -116,7 +116,6 @@ minBinTree (NodoBT y EmptyBT rt) = (y, rt) -- si a la izquierda está vacío, es
 minBinTree (NodoBT y lf rt) = let (x, new_left) = minBinTree lf -- si a la izq. tengo algo, tengo que ir lo más a la izquierda posible
                               in (x, NodoBT y new_left rt)
 
--- recorre el árbol 2 veces
 {- 
 minBinTree :: (Ord a)=> BinTree a -> a
 minBinTree EmptyBT = error "Está vacío"

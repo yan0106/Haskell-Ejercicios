@@ -36,9 +36,13 @@ inSet x (S (y:ys))
     | x == y = True
     | x /= y = inSet x (S ys)
 
+addSet :: (Eq a) => a -> Set a -> Set a  -- esta función se encarga de encapsular
+addSet x (S lista) = S (add x lista)
 
-
-
-
-
+--función aux--
+add :: (Eq a)=> a -> [a] -> [a] -- esta función tiene la lógica de agregar un elemento
+add x [] = [x]
+add x (y:ys)
+    | x == y = y:ys
+    | x /= y = y: add x ys
 
