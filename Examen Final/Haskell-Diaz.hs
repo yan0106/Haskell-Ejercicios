@@ -115,19 +115,7 @@ minBinTree :: (Ord a)=> BinTree a -> (a, BinTree a) -- devuelvo una tupla con el
 minBinTree (NodoBT y EmptyBT rt) = (y, rt) -- si a la izquierda está vacío, estoy parada en el nodo más chico
 minBinTree (NodoBT y lf rt) = let (x, new_left) = minBinTree lf -- si a la izq. tengo algo, tengo que ir lo más a la izquierda posible
                               in (x, NodoBT y new_left rt)
-
-{- 
-minBinTree :: (Ord a)=> BinTree a -> a
-minBinTree EmptyBT = error "Está vacío"
-minBinTree (NodoBT y EmptyBT _) = y  -- si a la izquierda está vacío, no me interesa que haya a la derecha, estoy en el nodo más chico
-minBinTree (NodoBT y lf rt) = minBinTree lf
-
-popBinTree :: (Ord a)=> BinTree a -> BinTree a  -- necesito quitar el elem más chico de la izquierda
-popBinTree EmptyBT = EmptyBT  -- árbol vacío
-popBinTree (NodoBT y EmptyBT rt) = rt  -- o no tiene nada a la izquierda
-popBinTree (NodoBT y lf rt) = NodoBT y (popBinTree lf) rt -- o tiene algo a la izquierda 
--}
-
+                              
 -- probar funciones --
 -- ghci> let arbol = NodoBT 5 (NodoBT 3 EmptyBT EmptyBT) (NodoBT 10 EmptyBT EmptyBT)
 
