@@ -19,3 +19,26 @@ utilizando listas no ordenadas y sin duplicados.
 El método unionSet (Unión de dos conjuntos) se escribirá haciendo uso de los 
 métodos ya definidos, es decir no se operará directamente la lista sino que se operará al SET.
 -}
+
+--definición
+newtype Set a = S [a] deriving Show
+
+emptySet :: Set a
+emptySet = S []
+
+setEmpty :: Set a -> Bool
+setEmpty (S []) = True
+setEmpty (S (x:xs)) = False
+
+inSet :: (Eq a) => a -> Set a -> Bool
+inSet x (S []) = False
+inSet x (S (y:ys))
+    | x == y = True
+    | x /= y = inSet x (S ys)
+
+
+
+
+
+
+
