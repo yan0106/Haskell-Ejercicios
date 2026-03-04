@@ -27,7 +27,7 @@ array :: a -> Int -> Array a
 
 ----------
 
-fromList:: [a] -> Array a    // Crea una array del tamaño adecuado a partir de los valores almacenados en la lista dada
+fromList:: [a] -> Array a    // Crea un array del tamaño adecuado a partir de los valores almacenados en la lista dada
 
 -----------
 
@@ -42,8 +42,6 @@ elemento:: Array a -> Int -> a    // extrae el valor almacenado en posición ind
 --versión 1--
 
 --definición interna--
-{- HLINT ignore "Redundant bracket" -}
-{- HLINT ignore "Use foldr" -}
 newtype Array a = Arr ([a] , Int) deriving Show
 
 --funciones--  
@@ -61,7 +59,7 @@ arrlist :: a -> Int -> [a]
 arrlist x 0 = []
 arrlist x n = x : (arrlist x (n-1))
 
-fromList:: [a] -> Array a -- Crea una array del tamaño adecuado a partir de los valores almacenados en la lista dada
+fromList:: [a] -> Array a -- Crea un array del tamaño adecuado a partir de los valores almacenados en la lista dada
 fromList [] = Arr ([], 0)
 fromList lista = Arr (lista, l)
                   where l = largo lista
@@ -70,3 +68,13 @@ fromList lista = Arr (lista, l)
 largo :: [a] -> Int
 largo [] = 0
 largo (x:xs) = (1 + largo xs)
+
+update :: Array a -> Int -> a -> Array a -- coloca un valor en la posición indicada de un array
+update (Arr ([], 0)) i x = error "No se puede insertar el elemento"
+update (Arr (lista, n)) i x = Arr (reemplazar i x lista, n) 
+
+--función aux.
+reemplazar :: Int -> a -> [a] -> [a]
+reemplazar i x (y:ys)
+        | i == 0 = x : ys
+        | i > 0  = y : reemplazar (i-1) x ys
