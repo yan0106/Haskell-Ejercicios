@@ -46,8 +46,9 @@ newtype Array a = Arr ([a] , Int) deriving Show
 
 --funciones--  
 array :: a -> Int -> Array a
-array x 0 = Arr ([], 0)
-array x n = Arr ((arrlist x n), n)
+array x n
+    | n < 0 = error "No se puede crear el array"
+    | otherwise = Arr ((arrlist x n), n)
 
 -- (x:xs) Arr
 -- i = indice , n = tamaño
@@ -69,12 +70,13 @@ largo :: [a] -> Int
 largo [] = 0
 largo (x:xs) = (1 + largo xs)
 
-update :: Array a -> Int -> a -> Array a -- coloca un valor en la posición indicada de un array
-update (Arr ([], 0)) i x = error "No se puede insertar el elemento"
-update (Arr (lista, n)) i x = Arr (reemplazar i x lista, n) 
+update :: Array a -> Int -> a -> Array a -- coloca un valor en la posición indicada de un array. Controla que no se vaya de rango.
+update (Arr (lista, n)) i x
+    | 0 <= i  && i < n = Arr (reemplazar i x lista, n)
+    | otherwise = error "No se puede actualizar el elemento"
 
 --función aux.
-reemplazar :: Int -> a -> [a] -> [a]
+reemplazar :: Int -> a -> [a] -> [a] -- asume que recibe datos válidos
 reemplazar i x (y:ys)
-        | i == 0 = x : ys
-        | i > 0  = y : reemplazar (i-1) x ys
+    | i == 0 = x : ys
+    | i > 0  = y : reemplazar (i-1) x ys
