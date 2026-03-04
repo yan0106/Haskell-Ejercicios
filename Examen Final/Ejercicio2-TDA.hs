@@ -43,6 +43,7 @@ elemento:: Array a -> Int -> a    // extrae el valor almacenado en posición ind
 
 --definición interna--
 {- HLINT ignore "Redundant bracket" -}
+{- HLINT ignore "Use foldr" -}
 newtype Array a = Arr ([a] , Int) deriving Show
 
 --funciones--  
@@ -55,6 +56,17 @@ array x n = Arr ((arrlist x n), n)
 -- 0 <=i < n
 -- Ej, array 0 10 , crea un array de 10 posiciones con valores iniciales 0
 
+--función aux.
 arrlist :: a -> Int -> [a]
 arrlist x 0 = []
 arrlist x n = x : (arrlist x (n-1))
+
+fromList:: [a] -> Array a -- Crea una array del tamaño adecuado a partir de los valores almacenados en la lista dada
+fromList [] = Arr ([], 0)
+fromList lista = Arr (lista, l)
+                  where l = largo lista
+
+--función aux.
+largo :: [a] -> Int
+largo [] = 0
+largo (x:xs) = (1 + largo xs)
