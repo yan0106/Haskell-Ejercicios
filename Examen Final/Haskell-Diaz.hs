@@ -61,7 +61,7 @@ split [x] = ([x],[])
 split (x:y:t) = (x:m,y:n)
                 where (m,n) = split t
 
-merge :: (Ord a)=> [a] -> [a] -> [a] -- duda si las listas son del mismo tipo
+merge :: (Ord a)=> [a] -> [a] -> [a]
 merge [] [] = []
 merge a [] = a
 merge [] b = b
