@@ -47,7 +47,7 @@ newtype Array a = Arr ([a] , Int) deriving Show
 --funciones--  
 array :: a -> Int -> Array a
 array x n
-    | n < 0 = error "No se puede crear el array"
+    | n < 0 = error "No se puede crear el array" -- si el tamaño del array es negativo, no se puede crear
     | otherwise = Arr ((arrlist x n), n)
 
 -- (x:xs) Arr
@@ -80,3 +80,16 @@ reemplazar :: Int -> a -> [a] -> [a] -- asume que recibe datos válidos
 reemplazar i x (y:ys)
     | i == 0 = x : ys
     | i > 0  = y : reemplazar (i-1) x ys
+
+elemento:: Array a -> Int -> a -- extrae el valor almacenado en posición indicada
+elemento (Arr (lista, n)) i
+    | 0 <=i && i < n = verElem i lista
+    | otherwise = error "No se puede consultar el dato"
+
+--función aux.
+verElem :: Int -> [a] -> a
+verElem i [] = error "Lista vacía"
+verElem i (x:xs) 
+    | i == 0 = x
+    | i > 0 = verElem (i-1) xs
+    | i < 0 = error "Indice incorrecto"
