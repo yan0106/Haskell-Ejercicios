@@ -57,9 +57,12 @@ borrar x (y:ys)
     | x /= y = y: borrar x ys
 
 unionSet :: (Eq a) => Set a -> Set a -> Set a
-unionSet set1 set2
-    | setEmpty set1 = set2
-    | setEmpty set2 = set1
-    | otherwise = addSet x (unionSet (S xs) set2) -- hace la unión entre el resto de set1 y set2. Primero resuelve la cola, después pega la cabeza x
-                  where S (x:xs) = set1 -- desarma set1 para poder usar la x
+unionSet (S []) (S []) = S []
+unionSet (S a) (S []) = S a
+unionSet (S []) (S b) = S b
+unionSet (S (x:xs)) (S listaB) = unionSet (S xs) (addSet x (S listaB))
+
+-- A se achica  // A = (x:xs)
+-- B se actualiza // B = listaB // B = addSet x B
+
 
