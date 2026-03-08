@@ -1,13 +1,31 @@
 {-
--a) Escribir una función que inserta elementos en una lista de manera de mantenerla ordenada de menor a mayor. 
+-a) Escribir una función que inserta elementos en una lista de manera de mantenerla ordenada de 
+menor a mayor. 
 De esta forma cada operación Head sobre la lista devuelve el elemento más chico almacenado en ella.
-
 inserta:: (Ord a)=> a->[a]->[a]
--b) Escribir una funcion que busca un elemento x en una lista m y lo elimina de la misma. El resultado será la lista
+-}
+
+insert :: (Ord a)=> a -> [a] -> [a]
+insert x [] = [x]
+insert x (y:t)
+    | x <= y = x:y:t
+    | x > y  = y: insert x t
+
+{-
+-b) Escribir una funcion que busca un elemento x en una lista m y lo elimina de la misma. 
+El resultado será la lista
 sin el valor x en ella.
 
 borra:: (Ord a )=> a -> [a] -> [a]
+-}
 
+borra:: (Ord a )=> a -> [a] -> [a]
+borra x [] = []
+borra x (y:t)
+    | x == y = t
+    | x /= y = y: borra x t
+
+{-
 -Se dice que 
 " Un entero positivo es perfecto si es igual a la suma de sus divisores, excluyendo el propio número" 
 
