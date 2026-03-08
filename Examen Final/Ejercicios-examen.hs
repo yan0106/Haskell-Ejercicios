@@ -36,8 +36,17 @@ dado n , sea [1, x1,x2,...xi] con xi <n , la lista de divisores de n.
 sum [1, x1,x2,...xi] == n,  implica n es perfecto.sar
 Ejemplo . n =6  sean [1,2,3] sus divisores
 1+2+3 = 6 , por tanto 6 es perfecto
+-}
 
+perfectos :: Int -> [Int]
+perfectos n = [ x | x <- [1..n-1], sum (divisores x) == x]
+-- lista de todos los números perfectos menores que n
+-- n es el límite 
 
+divisores :: Int -> [Int]
+divisores n = [j | j <- [1..n-1], mod n j == 0]
+
+{-
 -Escriba una funcion que implemente el metodo de clasificacion de listas Quick Sort.
 Para ello escriba una funcion auxiliar particion que reciba como argumento, un valor de referencia o pivot y a una 
 lista de valores del mismo tipo que el pivot. 
