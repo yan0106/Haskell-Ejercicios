@@ -18,3 +18,8 @@ indexado lista = [(x,n) | (x,n) <- miZip lista [1..l]]
 largo :: [a] -> Int
 largo [] = 0
 largo (x:xs) = 1 + (largo xs)
+
+--versión 2
+indexado2 :: [a] -> [(a,Int)]
+indexado2 lista = miZip lista [1..l]
+                 where l = largo lista
