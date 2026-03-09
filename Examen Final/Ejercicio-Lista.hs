@@ -15,6 +15,7 @@ indexado :: [a] -> [(a,Int)]
 indexado lista = [(x,n) | (x,n) <- miZip lista [1..l]]
                  where l = largo lista
 
+--func. aux.
 largo :: [a] -> Int
 largo [] = 0
 largo (x:xs) = 1 + (largo xs)
